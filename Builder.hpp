@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include <string>
 #include <iostream>
 
@@ -34,34 +35,42 @@ private:
 class ObjectBuilder {
 public:
 	ObjectBuilder& SetName(const std::string& name) {
-		_obj.SetName(name);
+		_obj->SetName(name);
 		return *this;
 	}
 
 	ObjectBuilder& SetSize(const Size& size) {
-		_obj.SetSize(size);
+		_obj->SetSize(size);
 		return *this;
 	}
 
 	ObjectBuilder& SetStyle(const uint32_t style) {
-		_obj.SetStyle(style);
+		_obj->SetStyle(style);
 		return *this;
 	}
 
-	Object Build() { return _obj; }
+	std::unique_ptr<Object> Build() { return std::move(_obj); }
+
+	void PrintObjPtr() {
+		std::cout << "Builder Obj ptr : " << _obj.get() << "\n";
+	}
 
 private:
-	Object _obj{};
+	std::unique_ptr<Object> _obj{ std::make_unique<Object>() };
 };
 
 void TestBuilder() {
 	ObjectBuilder obj_builder;
+	obj_builder.PrintObjPtr();
 
-	Object obj = obj_builder.
+	std::unique_ptr<Object> obj = obj_builder.
 		SetName("My Object").
 		SetSize({ 1280, 720 }).
 		SetStyle(123).
 		Build();
 
-	obj.DisplayProperties();
+	obj_builder.PrintObjPtr();
+	std::cout << "Ouput Obj ptr : " << obj.get() << "\n";
+
+	obj->DisplayProperties();
 }
