@@ -22,7 +22,7 @@ public:
 		_style = style;
 	}
 
-	void DisplayProperties() {
+	void DisplayProperties() const {
 		std::cout << "Properties : Name - " << _name << ", Size - (" << _size.width << ", " << _size.height << "), Style - " << _style << "\n";
 	}
 
@@ -34,6 +34,11 @@ private:
 
 class ObjectBuilder {
 public:
+	ObjectBuilder& Start() {
+		_obj = std::make_unique<Object>();
+		return *this;
+	}
+
 	ObjectBuilder& SetName(const std::string& name) {
 		_obj->SetName(name);
 		return *this;
@@ -49,28 +54,23 @@ public:
 		return *this;
 	}
 
-	std::unique_ptr<Object> Build() { return std::move(_obj); }
-
-	void PrintObjPtr() {
-		std::cout << "Builder Obj ptr : " << _obj.get() << "\n";
+	std::unique_ptr<Object> Build() { 
+		return std::move(_obj);
 	}
 
 private:
-	std::unique_ptr<Object> _obj{ std::make_unique<Object>() };
+	std::unique_ptr<Object> _obj{};
 };
 
 void TestBuilder() {
 	ObjectBuilder obj_builder;
-	obj_builder.PrintObjPtr();
 
 	std::unique_ptr<Object> obj = obj_builder.
+		Start().
 		SetName("My Object").
 		SetSize({ 1280, 720 }).
 		SetStyle(123).
 		Build();
-
-	obj_builder.PrintObjPtr();
-	std::cout << "Ouput Obj ptr : " << obj.get() << "\n";
 
 	obj->DisplayProperties();
 }
