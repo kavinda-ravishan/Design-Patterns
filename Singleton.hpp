@@ -77,7 +77,7 @@ private:
 	}
 };
 
-inline void SingletonTest() {
+inline void TestSingleton() {
 	Logger::Log("App started");
 
 	const float rand_val[] = { Random::Float(), Random::Float(), Random::Float() };

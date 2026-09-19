@@ -52,7 +52,7 @@ public:
 	}
 };
 
-void FactoryTest() {
+void TestFactory() {
 
 	try {
 		std::unique_ptr<Button> button = ButtonFactory::CreateButton(OS::web);

@@ -166,7 +166,7 @@ std::ostream& operator<<(std::ostream& ostr, const LinkedList<T>& llst) {
 }
 
 
-void IteratorTest() {
+void TestIterator() {
 	// ======================================== Array ========================================
 	std::array<int, 4> std_arr{ 1, 2, 3, 4 };
 

@@ -142,6 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Builder.hpp" />
     <ClInclude Include="Factory.hpp" />
     <ClInclude Include="Iterator.hpp" />
     <ClInclude Include="Singleton.hpp" />
