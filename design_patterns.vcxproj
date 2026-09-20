@@ -145,6 +145,7 @@
     <ClInclude Include="Builder.hpp" />
     <ClInclude Include="Factory.hpp" />
     <ClInclude Include="Iterator.hpp" />
+    <ClInclude Include="Observer.hpp" />
     <ClInclude Include="Singleton.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

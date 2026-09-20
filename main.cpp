@@ -2,6 +2,7 @@
 #include "Iterator.hpp"
 #include "Factory.hpp"
 #include "Builder.hpp"
+#include "Observer.hpp"
 
 int main(const int argc, const char* argv[]) {
 
@@ -9,6 +10,7 @@ int main(const int argc, const char* argv[]) {
 	TestIterator();
 	TestFactory();
 	TestBuilder();
+	TestObserver();
 
 	return 0;
 }
