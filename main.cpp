@@ -3,6 +3,7 @@
 #include "Factory.hpp"
 #include "Builder.hpp"
 #include "Observer.hpp"
+#include "Strategy.hpp"
 
 int main(const int argc, const char* argv[]) {
 
@@ -11,6 +12,7 @@ int main(const int argc, const char* argv[]) {
 	TestFactory();
 	TestBuilder();
 	TestObserver();
+	TestStrategy();
 
 	return 0;
 }
